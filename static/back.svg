@@ -1,0 +1,17 @@
+<!-- https://developer.apple.com/sf-symbols/ -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 85"><path d="M0 42.4q0 1 .3 1.8.4.8 1 1.5l38.8 37.8q1.3 1.3 3.1 1.3 1.3 0 2.3-.6 1-.5 1.6-1.5.6-1 .6-2.3 0-1.8-1.3-3.2L10.9 42.4 46.4 7.7q1.3-1.4 1.3-3.2 0-1.3-.6-2.3-.6-1-1.6-1.6-1-.5-2.3-.5-1.8 0-3.1 1.2l-38.8 38q-.6.6-1 1.4-.3.8-.3 1.7Z"/></svg>
+
+<!--
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512"><path d="m230 256 188 187-68 69-188-188-68-68 68-68L350 1l68 68-188 187z"/></svg>
+-->
+<!--
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg 
+ version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="512px"
+	 height="512px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"
+><g fill="#007aff" id="afcae5a789ccd549f9c6e2a2f806b5c5"><g></g><path style="display: inline; " d="M230.453,256l187.365,187.365L349.683,511.5L162.317,324.135L94.183,256
+		l68.135-68.135L349.683,0.5l68.135,68.135L230.453,256z"></path></g></svg>
+
+-->
