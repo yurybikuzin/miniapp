@@ -42,9 +42,9 @@ And I did try to implement such kind of emulation. Now I can stay in development
 ### <a name="deploy_targets"></a>Deploy targets
 
 Important detail for developers: we will use three *deploy targets* for our MiniApp: 
-- dev: [@dev_MiniAppBot](t.me/dev_MiniAppBot)
-- demo: [@demo_MiniAppBot](t.me/demo_MiniAppBot)
-- prod: [@prod_MiniAppBot](t.me/prod_MiniAppBot) - usaully no *deploy target prefix* should be used in the name of production bot, but unfortunatly name @MiniAppBot was already taken, so in this particular case name does look like *production* 
+- dev: [@dev_MiniAppBot](https://t.me/dev_MiniAppBot)
+- demo: [@demo_MiniAppBot](https://t.me/demo_MiniAppBot)
+- prod: [@prod_MiniAppBot](https://t.me/prod_MiniAppBot) - usaully no *deploy target prefix* should be used in the name of production bot, but unfortunatly name @MiniAppBot was already taken, so in this particular case name does look like *production* 
 
 Hope, it's obvious, that *dev* is devoted to development stage. It is highly unstable. 
 Developer checks his every moment changes here
