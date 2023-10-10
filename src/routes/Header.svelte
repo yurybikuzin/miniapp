@@ -61,11 +61,11 @@
     {#if _isVisibleBackButton}
     <button class="backButton" on:click={backButtonClickHandler}>
         <div class="arrow"></div>
-        <div class="caption">Назад</div>
+        <div class="caption">Back</div>
     </button>
     {/if}
     <div class="title">
-        <div>volleyplay-club</div>
+        <div>MiniApp</div>
         <div>бот</div>
     </div>
     <button class="themeButton {_mode}" on:click={themeButtonClickHandler}>

@@ -255,3 +255,7 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 But actually, you don't need to do it, because [deploy does it all](#deploy)
+
+## Alternatives
+
+I believe, same emulation (or even better) could be implemented not only for Svelte, but for React/Vue and others as well

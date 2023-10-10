@@ -19,6 +19,7 @@ export let telegram_main_button = {
             _mainButton.setParams({ text, is_visible: true })
         } else if (_isEmulator) {
             _text = text
+            _isVisibleStore.set(false)
             _isVisibleStore.set(true)
         }
         _isVisible = true

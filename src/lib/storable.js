@@ -12,9 +12,6 @@ export function storable(name, initialValue) {
     if (typeof value === 'undefined' || value === null) {
         value = initialValue
     }
-    // if (isBrowser) {
-    //     console.log({name, value, initialValue})
-    // }
     const store = writable(value);
     const { subscribe, set, update } = store;
 

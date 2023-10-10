@@ -1,5 +1,3 @@
-// import { onMount } from 'svelte';
-
 import { goto } from '$app/navigation'; // https://stackoverflow.com/questions/68187584/how-to-route-programmatically-in-sveltekit
 
 import { writable } from 'svelte/store'
@@ -35,22 +33,18 @@ export let telegram_back_button = {
     push: function (url: string) {
         if (!_inNavigate) {
             _urlStack.push(url);
-            console.log('after push: _urlStack', _urlStack)
             _show()
         }
     },
     navigate: function () {
-        // console.warn('_navigate')
         if (_urlStack.length) {
-            let url = _urlStack.pop();
-            console.log('after navigate: _urlStack', _urlStack)
+            let url = _urlStack.pop()
             _inNavigate = true
             try {
                 goto(url) 
             } finally {
                 _inNavigate = false
             }
-            // goto(`/${route}`, { replaceState }) 
         } else {
             console.warn('TelegramBackButton.navigate failed for empty url stack', _urlStack)
         }
@@ -58,8 +52,19 @@ export let telegram_back_button = {
             _hide()
         }
     },
-    clear: function() {
-        _urlStack.clear();
+    clearStack: function() {
+            console.log(_urlStack)
+        if (_urlStack.length) {
+            let url = _urlStack[0]
+            console.log({url})
+            _inNavigate = true
+            try {
+                goto(url) 
+            } finally {
+                _inNavigate = false
+            }
+        }
+        _urlStack = []
         _hide()
     },
     didMount: function() {
@@ -78,37 +83,3 @@ export let telegram_back_button = {
         }
     }
 }
-// Object.defineProperty(telegram_back_button, "isVisible", {
-//     get: function () {
-//         return _isVisible;
-//     },
-//     set: function (value) {
-//         if (value != _isVisible) {
-//             _isVisible = value;
-//             if (_backButton && _isVisible != _backButton.isVisible) {
-//                 if (_isVisible) {
-//                     _backButton.show()
-//                 } else {
-//                     _backButton.hide()
-//                 }
-//             }
-//         }
-//     },
-// });
-
-// function routeToPage(route: string, replaceState: boolean) {
-//     goto(`/${route}`, { replaceState }) 
-// }
-
-// onMount(async () => {
-//     console.log('onMount TelegramBackButton')
-//     _backButton = window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.BackButton
-//     if (_backButton) {
-//         if (!_backButton.didInit) {
-//             _backButton.isVisible = _isVisible;
-//             _backButton.onClick(backButtonClickHandler)
-//             _backButton.didInit = true;
-//             console.log('_backButton.didInit')
-//         }
-//     }
-// });
