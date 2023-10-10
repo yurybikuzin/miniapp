@@ -208,29 +208,29 @@ Deploy is done by single command from root of repo:
 #### What deploy script actually does?
 
 It
-- [assures](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L14-L20) that NVM is installed (i.e. installs it if needed; so, actually, you might skip manually installing and preparing NVM)
-- [assures](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L22-L28) that [required version of node](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L8) is **installed**
-- [assures](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L30-L36) that [required version of node](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L8) is **used**
-- [installs](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L38-L41) required svelte adapter
-- [builds](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L43-L44) the svelte app
-- [reads](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L52-L61) the file `.secret` to get appropriate TOKEN
-- [prepares](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L75-L93) systemd.service file (it has its own name for each deploy environment)
-- [prepares](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L95-L117) file `include.conf` for NGINX to be auto included into `/etc/nginx/main.conf` on server
-- [prepares](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L119-L127) `.env` file for server side: lines 124-131
-- [make](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L129-L130) destination folder on server at HOME dir of User behalf of ssh connection to deploy is establishing (see [prepare_ssh_config](#prepare_ssh_config)), respectively to target deploy enviroment one of:
+- [assures](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L14-L20) that NVM is installed (i.e. installs it if needed; so, actually, you might skip manually installing and preparing NVM)
+- [assures](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L22-L28) that [required version of node](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L8) is **installed**
+- [assures](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L30-L36) that [required version of node](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L8) is **used**
+- [installs](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L38-L41) required svelte adapter
+- [builds](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L43-L44) the svelte app
+- [reads](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L52-L61) the file `.secret` to get appropriate TOKEN
+- [prepares](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L75-L93) systemd.service file (it has its own name for each deploy environment)
+- [prepares](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L95-L117) file `include.conf` for NGINX to be auto included into `/etc/nginx/main.conf` on server
+- [prepares](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L119-L127) `.env` file for server side: lines 124-131
+- [make](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L129-L130) destination folder on server at HOME dir of User behalf of ssh connection to deploy is establishing (see [prepare_ssh_config](#prepare_ssh_config)), respectively to target deploy enviroment one of:
     - `~/miniapp/dev/miniapp/` 
     - `~/miniapp/demo/miniapp/`
     - `~/miniapp/prod/miniapp/`
-- [rsync's](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L132-L133) to destination folder all built and prepared files
-- [runs](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L135-L136) script [`deploy_server_helper.sh`](https://github.com/yurybikuzin/minapp/blob/main/deploy_server_helper.sh) on server side, which in its own turn:
-    - [assures](https://github.com/yurybikuzin/minapp/blob/main/deploy_server_helper.sh#L19-L25) that NVM is installed on server (i.e. installs it if needed)
-    - [assures](https://github.com/yurybikuzin/minapp/blob/main/deploy_server_helper.sh#L27-L33) that [required version of node](https://github.com/yurybikuzin/minapp/blob/main/deploy_server_helper.sh#3) is **installed** on server; BEWARE: different node version may be set to be used on server
-    - [assures](https://github.com/yurybikuzin/minapp/blob/main/deploy_server_helper.sh#L35-L41) that [required version of node](https://github.com/yurybikuzin/minapp/blob/main/deploy_server_helper.sh#3) is **used** on server; BEWARE: different node version may be set to be used on server
-    - [installs dependencies](https://github.com/yurybikuzin/minapp/blob/main/deploy_server_helper.sh#L45-L46)
-    - [re/starts service](https://github.com/yurybikuzin/minapp/blob/main/deploy_server_helper.sh#L48-L56), which [runs](https://github.com/yurybikuzin/minapp/blob/main/deploy_server_helper.sh#L58) our app
-- [assures](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L138-L142) proper `include ...;` statement exists in `/etc/nginx/main.conf` and [reloads nginx](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L141) to apply changes in `include.conf`
-- [sets bot webhook](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L144-L145)
-- [checks](https://github.com/yurybikuzin/minapp/blob/main/di/apps/miniapp/do.sh#L146-L147) if MiniApp is ready 
+- [rsync's](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L132-L133) to destination folder all built and prepared files
+- [runs](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L135-L136) script [`deploy_server_helper.sh`](https://github.com/yurybikuzin/miniapp/blob/main/deploy_server_helper.sh) on server side, which in its own turn:
+    - [assures](https://github.com/yurybikuzin/miniapp/blob/main/deploy_server_helper.sh#L19-L25) that NVM is installed on server (i.e. installs it if needed)
+    - [assures](https://github.com/yurybikuzin/miniapp/blob/main/deploy_server_helper.sh#L27-L33) that [required version of node](https://github.com/yurybikuzin/miniapp/blob/main/deploy_server_helper.sh#3) is **installed** on server; BEWARE: different node version may be set to be used on server
+    - [assures](https://github.com/yurybikuzin/miniapp/blob/main/deploy_server_helper.sh#L35-L41) that [required version of node](https://github.com/yurybikuzin/miniapp/blob/main/deploy_server_helper.sh#3) is **used** on server; BEWARE: different node version may be set to be used on server
+    - [installs dependencies](https://github.com/yurybikuzin/miniapp/blob/main/deploy_server_helper.sh#L45-L46)
+    - [re/starts service](https://github.com/yurybikuzin/miniapp/blob/main/deploy_server_helper.sh#L48-L56), which [runs](https://github.com/yurybikuzin/miniapp/blob/main/deploy_server_helper.sh#L58) our app
+- [assures](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L138-L142) proper `include ...;` statement exists in `/etc/nginx/main.conf` and [reloads nginx](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L141) to apply changes in `include.conf`
+- [sets bot webhook](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L144-L145)
+- [checks](https://github.com/yurybikuzin/miniapp/blob/main/di/apps/miniapp/do.sh#L146-L147) if MiniApp is ready 
 
 
 ## Development
