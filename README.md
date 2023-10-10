@@ -77,7 +77,7 @@ Of course, all of it could be adopted to MacOS and Windows. But now I'm on MVP s
 
 4. Then run `npm install` to make ready all project dependecies
 
-## Deploy
+## <a name="deploy"></a>Deploy
 
 ### Prerequisites
 
@@ -244,7 +244,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+## Beyond this MiniApp deploy and development
 
 To create a production version of your app:
 
@@ -253,3 +253,5 @@ npm run build
 ```
 
 You can preview the production build with `npm run preview`.
+
+But actually, you don't need to do it, because [deploy does it all](#deploy)
