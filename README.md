@@ -33,13 +33,13 @@ At least these two entities exist only inside Telegram, not in *web application*
 
 Rules of this MiniApp contests asks not to use just *web application* as MiniApp. But I suggest opposite approach: we want to be able work with MiniApp as just *web application* while development. Of course, not all Telegram features could be emulated properly. But we'll try to do best of possible.
 
-And I did try to implement such kind of emulation. Now I can stay in development mode with no need to offen "deploy to server and open Telegram Beta Desktop" longer time, than before. Development is going on at local machine (i.e. at localhost), but as a side effect emulation is still available on server side:
+And I did try to implement such kind of emulation. Now I can stay in development mode with no need to offen "deploy to server and open Telegram Beta Desktop" longer time, than before. Development is going on at local machine (i.e. at localhost), but as a side effect emulation is still available on server side for all three [deploy targets](#deploy_targets):
 
 - Dev: [https://dev.miniapp.u2h.ru](https://dev.miniapp.u2h.ru)
 - Demo: [https://demo.miniapp.u2h.ru](https://demo.miniapp.u2h.ru)
 - Prod: [https://miniapp.u2h.ru](https://miniapp.u2h.ru)
 
-### Deploy targets
+### <a name="deploy_targets"></a>Deploy targets
 
 Important detail for developers: we will use three *deploy targets* for our MiniApp: 
 - dev: [@dev_MiniAppBot](t.me/dev_MiniAppBot)
